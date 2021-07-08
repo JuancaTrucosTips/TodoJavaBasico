@@ -1,5 +1,4 @@
 package com.juanca.java.basico._6_.operadores;
-
 /*
  * En este caso los operadores de + - * /
  * Tienen un prioridad o precedencia que dice quien se ejecuta primero
@@ -47,6 +46,9 @@ public class _2_Main_Asignacion {
 		// Luego Multiplica y luego divide
 		// Por ultimo suma 1
 		int k = ((12 - 2) * ( 21 - 11)) / ((1+1)*(15-10)) + 1 ;		
+		System.out.println(k);
+		
+		k = ((12 * 2) * ( 21 - 11)) / ((1+1)*(15-10)) + 1 ;		
 		System.out.println(k);
 	}
 
