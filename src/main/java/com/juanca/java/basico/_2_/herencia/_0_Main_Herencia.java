@@ -21,6 +21,8 @@ public class _0_Main_Herencia {
 		System.out.println(cuadrado.perimetro());
 		
 		// Se accede a los metodos de la clase padre que no se sobreescribieron
+		// Esto es lo que la herencia permite, es decir, reutilizar metodos que son
+		// semejantes en varias clases y evita repetir código
 		System.out.println(cuadrado.perimetroMejorado());
 		System.out.println(cuadrado.perimetroMejorado2());
 
