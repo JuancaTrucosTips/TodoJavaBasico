@@ -3,6 +3,10 @@ package com.juanca.java.basico._2_.herencia;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Para esto es bueno tener en cuenta el contexto estatico y dinamico que maneja Java
+ */
+
 public class _1_Main_Variables_Estaticas_Final {
 
 	public static void main(String[] args) {
@@ -23,6 +27,14 @@ public class _1_Main_Variables_Estaticas_Final {
 		Cuadrado.MI_NOMBRE = "Cuadrado 2";
 		System.out.println(Cuadrado.MI_NOMBRE);
 		
+		Cuadrado cuadrado1 = new Cuadrado(lados);
+		// No se puede acceder a las variables estaticas de la clase desde una
+		// instancia del objeto de la clase
+		//cuadrado1.MIS_LADOS;
+		
+		// Si se quiere acceder desde un objeto o instancia se debe crear un metodo no estatico
+		// dentro de la clase
+		cuadrado1.conocerLados();
 	}
 
 }
