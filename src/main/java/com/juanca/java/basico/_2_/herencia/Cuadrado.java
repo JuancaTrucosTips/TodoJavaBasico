@@ -22,5 +22,9 @@ public class Cuadrado extends Poligono{
 	public double perimetro() {
 		return 0.0 * PI * PI_2;
 	}
+	
+	public void conocerLados(){
+		System.out.println(Cuadrado.MIS_LADOS);
+	}
 
 }

@@ -6,6 +6,8 @@ import java.util.List;
 public class Poligono {
 
 	private List<LadoPoligono> ladosPoligono;
+	public String tipoPoligono = "Plano";
+	protected String tiposLados = "Rectos"; 
 
 	public Poligono(List<LadoPoligono> lados) {
 		this.ladosPoligono = new ArrayList<LadoPoligono>();
@@ -29,4 +31,11 @@ public class Poligono {
 		return ladosPoligono.stream().mapToDouble(lado -> lado.getTamanio()).sum();
 	}
 
+	public String getTiposLados() {
+		return this.tiposLados;
+	}
+
+	public void setTiposLados(String tiposLados) {
+		this.tiposLados = tiposLados;
+	}
 }
