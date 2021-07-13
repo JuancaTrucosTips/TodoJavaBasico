@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* Es bueno comprender primero como funciona la Memoria en Java (pila o stack y heap)
- * El polimorfismo o UpCasting
+ * En el polimorfismo se usan los conceptos de UpCasting y DownCasting
  * consiste en la posibilidad de que una referencia a objetos de una clase 
  * pueda conectarse también con objetos de descendientes de ésta
  */
@@ -41,7 +41,7 @@ public class _0_Main_Polimorfismo_Sencillo {
 		 * por eso se hace el cast (Medico) ya que Medico hereda de persona y permite convertirla
 		 * */
 		Medico medico = new Medico(); // Asignación polimorfica por la Herencia que hay
-		medico = (Medico) persona;
+		medico = (Medico) persona; // Tambien se puede usar instanceof y convertir
 		medico.realizarConsulta();
 		System.out.println(medico);
 		System.out.println();
@@ -54,6 +54,7 @@ public class _0_Main_Polimorfismo_Sencillo {
 
 		/* Pensaria que ya la variable persona tiene acceso a los comportamientos de Programador
 		   pero NO ES ASÏ ya que no se ha convertido a la clase Programamdor
+		   a no ser que tuvieran metodos en común y se sobreescribiera en la hija
 		   Por esto la siguiente linea no funcionaria
 		 */
 		//persona.programarServicioWeb();
@@ -69,7 +70,7 @@ public class _0_Main_Polimorfismo_Sencillo {
 		System.out.println(medicoAuxiliar);
 
 		/* Asignación Polimorfica sin cast
-		 * En la linea 70 no me pide cast por que ya lo hace por el simple hecho
+		 * En la linea 69 no me pide cast por que ya lo hace por el simple hecho
 		 * que Medico hereda de Persona
 		 */
 		Persona personaAuxiliar = medicoAuxiliar; // Asignacion polimorfica
