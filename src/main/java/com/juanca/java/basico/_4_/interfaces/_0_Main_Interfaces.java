@@ -3,8 +3,8 @@ package com.juanca.java.basico._4_.interfaces;
 public class _0_Main_Interfaces {
 
 	public static void main(String[] args) {
-		double tamaño = 20.3;
-		IFiguraPlana figura = new CuadradoImpl(tamaño);
+		double tamanio = 20.3;
+		IFiguraPlana figura = new CuadradoImpl(tamanio);
 					
 		System.out.println("Metodos que se pueden accceder desde la interfaz");
 		// La interface IFigura tiene un metodo estatico al cual se puede acceder 

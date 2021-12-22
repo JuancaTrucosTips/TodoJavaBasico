@@ -7,16 +7,16 @@ public class RectanguloImpl implements IFiguraPlana {
 
 	private List<Lado> lados;
 
-	public RectanguloImpl(double tamañoLado1, double tamañoLado2) {
+	public RectanguloImpl(double tamanioLado1, double tamanioLado2) {
 
 		lados = new ArrayList<Lado>();
 
 		Lado lado1 = new Lado();
-		lado1.setTamaño(tamañoLado1);
+		lado1.setTamanio(tamanioLado1);
 		lados.add(lado1);
 		
 		Lado lado2 = new Lado();
-		lado2.setTamaño(tamañoLado2);
+		lado2.setTamanio(tamanioLado2);
 		lados.add(lado2);
 	}
 
@@ -24,13 +24,13 @@ public class RectanguloImpl implements IFiguraPlana {
 	public double obtenerArea() {
 		double area = 1;
 		for (Lado lado : lados) {
-			area *= lado.getTamaño();
+			area *= lado.getTamanio();
 		}
 		return area;
 	}
 	
 	public double obtenerAreaLambda() {
-		return lados.stream().map(Lado::getTamaño).reduce(1.0, (a , b) -> a * b);
+		return lados.stream().map(Lado::getTamanio).reduce(1.0, (a , b) -> a * b);
 	}
 
 	@Override

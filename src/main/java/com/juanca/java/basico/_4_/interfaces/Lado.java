@@ -1,13 +1,13 @@
 package com.juanca.java.basico._4_.interfaces;
 
 public class Lado {
-	private double tamaño;
+	private double tamanio;
 
-	public double getTamaño() {
-		return tamaño;
+	public double getTamanio() {
+		return tamanio;
 	}
 
-	public void setTamaño(double tamaño) {
-		this.tamaño = tamaño;
+	public void setTamanio(double tamanio) {
+		this.tamanio = tamanio;
 	}
 }
