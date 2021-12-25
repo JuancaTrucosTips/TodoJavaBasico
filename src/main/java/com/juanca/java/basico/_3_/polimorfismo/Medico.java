@@ -3,6 +3,15 @@ package com.juanca.java.basico._3_.polimorfismo;
 public class Medico extends Persona{
 	private String especialidad;
 	
+	public Medico() {
+		
+	}
+	
+	public Medico(String nombre, int edad, String especialidad) {
+		super(nombre, edad);
+		this.especialidad = especialidad;
+	}
+	
 	@Override
 	public void decirQuienEres() {
 		System.out.println("Soy un Medico.");
