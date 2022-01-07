@@ -30,7 +30,7 @@ public class _0_Main_ToStringEqualsHashCode {
 
 		System.out.println("Los hash son iguales: " + (abogado1.hashCode() == abogado2.hashCode()));
 		
-		System.out.println("Escriot del maste de prueba_rama");
+		System.out.println("Prueba de rama prueba_rama");
 		
 	}
 
