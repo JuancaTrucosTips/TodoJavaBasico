@@ -18,7 +18,7 @@ public interface IFiguraPlana {
 	};
 	
 	public static void imprimirQueNoEs(){
-		System.out.println("No soy un número");
+		System.out.println("No soy un nï¿½mero");
 	};
 	
 	public default void imprimirQueNoEsDefault(){
