@@ -24,11 +24,14 @@ public class _0_Main_ToStringEqualsHashCode {
 		System.out.println();
 
 		/*
-		 * Por regla, si el método equals() entre dos objetos devuelve verdadero, 
-		 * entonces el hashcode debería ser igual.
+		 * Por regla, si el mï¿½todo equals() entre dos objetos devuelve verdadero, 
+		 * entonces el hashcode deberï¿½a ser igual.
 		 */
 
-		System.out.println("Los hash son iguales: " + (abogado1.hashCode() == abogado2.hashCode()));;
+		System.out.println("Los hash son iguales: " + (abogado1.hashCode() == abogado2.hashCode()));
+		
+		System.out.println("Cambio de prueba_rama");
+		
 	}
 
 }
