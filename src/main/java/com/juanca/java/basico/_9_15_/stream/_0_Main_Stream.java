@@ -1,6 +1,8 @@
 package com.juanca.java.basico._9_15_.stream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -71,7 +73,112 @@ public class _0_Main_Stream {
 		
 		System.out.println();
 		listadoIdentificadoresOk.forEach(id -> System.out.println(id));
-	
+		
+		/*
+		 * Find First
+		 */
+		setUpUsers();
+		User primerUsuario = users.stream()	
+				.filter(usuario -> "Juan".equals(usuario.getNombre()))
+				.findFirst()
+				.orElse(new User(0, "vacio"));
+		
+		System.out.println();
+		System.out.println("Find First");
+		System.out.println(primerUsuario.getId() + " " +  primerUsuario.getNombre());
+		
+		/*
+		 * FlatMap
+		 * Tiene los datos de diferentes arrays o listados y los concatena en un unico stream
+		 */
+		
+		List<List<String>> nombreVariasListas = new ArrayList<List<String>>(
+				Arrays.asList(
+					new ArrayList<String>(Arrays.asList("James", "Karol G")),
+					new ArrayList<String>(Arrays.asList("Messi", "Cris H"))
+					)
+				);
+		
+		List<String> nombresUnicaLista = nombreVariasListas.stream()
+				.flatMap(elemento -> elemento.stream())
+				.collect(Collectors.toList());
+		
+		System.out.println();
+		System.out.println("FlatMap");	
+		nombresUnicaLista.forEach(valor -> System.out.println(valor));
+		
+		/*
+		 * Peek, actua como un ForEach pero sin ser una opción final
+		 * se puede seguir haciendo cosas en el ciclo del stream
+		 */
+		
+		System.out.println("");
+		setUpUsers();
+		System.out.println("Peak");
+		List<User> users2 = users.stream()
+				.peek(usuario -> usuario.setNombre(usuario.getNombre() + " Apellido"))
+				.collect(Collectors.toList());
+		
+		users2.forEach(usuario -> System.out.println(usuario.getNombre()));
+		
+		System.out.println("");
+		setUpUsers();
+		System.out.println("Count");
+		
+		Long numeroFiltrado = users2.stream()
+				.filter(usuario -> usuario.getId() < 3)
+				.count();
+		
+		System.out.println("cantidad que cumple el filtro: " + numeroFiltrado);
+		
+		System.out.println("");
+		System.out.println("Skip y Limit");
+		/*
+		 * Skip, saltar tantos elementos como queramos
+		 */
+		
+		String [] letras = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
+		List<String> letrasFiltradas = Arrays.stream(letras)
+				.skip(2)
+				.limit(4)
+				.collect(Collectors.toList());
+		
+		letrasFiltradas.forEach(letra -> System.out.println(letra));
+		
+		/* sorted
+		 * Nos sirve para ordenar listados de datos
+		 */
+		
+		System.out.println("");
+		setUpUsers();
+		System.out.print("Sorted: \n");
+
+		List<User> usuariosOrdenados = users.stream()
+				.sorted(Comparator.comparing(User::getNombre))
+				.collect(Collectors.toList());
+		
+		usuariosOrdenados.forEach(usuario -> System.out.println(usuario.getNombre()));
+		
+		/*
+		 * Uso de min y max
+		 */
+		
+		System.out.println("\nMin");
+		User minUser = users.stream()
+				.min(Comparator.comparing(User::getId))
+				.orElse(new User(0,"lista vacia"));
+		
+		System.out.println("usuario con el minimo id, es: " + minUser.getId() + " - " + minUser.getNombre());
+		
+		/*
+		 * distinct
+		 */
+		System.out.println("\nUso de distinct");
+		String [] letrasDuplicadas = {"a", "b", "c", "a", "e", "r", "g", "h", "h", "j" };
+		List<String> letrasUnicas = Arrays.stream(letrasDuplicadas)
+				.distinct().collect(Collectors.toList());
+		
+		letrasUnicas.forEach(letra -> System.out.println(letra));
 	}
 
 	private static void imprimirListaStream() {
