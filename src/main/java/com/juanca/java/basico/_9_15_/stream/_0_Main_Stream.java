@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /*
@@ -178,7 +180,68 @@ public class _0_Main_Stream {
 		List<String> letrasUnicas = Arrays.stream(letrasDuplicadas)
 				.distinct().collect(Collectors.toList());
 		
-		letrasUnicas.forEach(letra -> System.out.println(letra));
+		letrasUnicas.forEach(letra -> System.out.println(letra)); 
+		
+		/*
+		 * allMatch : Verifia si el predicado es verdadero o fals
+		 * anyMatch : Verifica si por lo menos alguno cumple el predicado
+		 * nonematch : Verifica si ningun elemento pasa el predicado
+		 */
+		System.out.println("\nUsando allMatch, anyMatch, noneMatch");
+		List<Integer> listaNumeros = Arrays.asList(100, 300, 50);
+		
+		boolean allMatch = listaNumeros.stream().allMatch(numero -> numero > 301);
+		System.out.println(allMatch);
+		
+		boolean anyMatch = listaNumeros.stream().anyMatch(numero -> numero > 100);
+		System.out.println(anyMatch);
+		
+		boolean noneMatch = listaNumeros.stream().noneMatch(numero -> numero < 20);
+		System.out.println(anyMatch);
+		
+		System.out.println("\nUsando average");
+		setUpUsers();
+		
+		double promedio = users.stream()
+				.mapToInt(User::getId)
+				.average()
+				.orElse(0);
+		
+		System.out.println(promedio);
+		
+		System.out.println("\nUsando IntStream of");
+		IntStream numeros = IntStream.of(1,5,9,6);
+		double suma = numeros.sum();
+		System.out.println(suma);
+		
+		System.out.println("\nUsando IntStream Range");
+		double suma2 = IntStream.rangeClosed(1, 3).sum();
+		System.out.println(suma2);
+		
+		System.out.println("\nUsando Reduce");
+		int sumaInt = users.stream()
+				.map(User::getId)
+				.reduce(0, Integer::sum);
+		System.out.println(sumaInt);
+		
+		System.out.println("\nUsando joining");
+		String nombres = users.stream()
+				.map(User::getNombre)
+				.collect(Collectors.joining(" - "));
+		
+		System.out.println(nombres);
+		
+		/*
+		 * Garantiza que no hay elementos repetidos 
+		 * pero no garantiza el orden
+		 */
+		System.out.println("\nUsando toSet");
+		Set<String> listadoNombresUnicos = users.stream()
+				.map(User::getNombre)
+				.collect(Collectors.toSet());
+		
+		listadoNombresUnicos.stream().forEach(nombre -> System.out.println(nombre));
+		
 	}
 
 	private static void imprimirListaStream() {
