@@ -3,8 +3,11 @@ package com.juanca.java.basico._9_15_.stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -231,7 +234,7 @@ public class _0_Main_Stream {
 		
 		System.out.println(nombres);
 		
-		/*
+		/* Collectors.toSet()
 		 * Garantiza que no hay elementos repetidos 
 		 * pero no garantiza el orden
 		 */
@@ -242,6 +245,43 @@ public class _0_Main_Stream {
 		
 		listadoNombresUnicos.stream().forEach(nombre -> System.out.println(nombre));
 		
+		 /* DoubleSummaryStatistics
+		  * Obtenemos varios datos en 1 sola variable de count, sum, avg, max y min∫
+		 */
+		System.out.println("\nUsando DoubleSummaryStatistics");
+		DoubleSummaryStatistics doubleSummaryStatistics = users.stream()
+				.collect(Collectors.summarizingDouble(User::getId));
+		System.out.println("Average: " + doubleSummaryStatistics.getAverage());
+		
+		// Otra forma
+		DoubleSummaryStatistics doubleSummaryStatistics1 = users.stream()
+				.mapToDouble(User::getId)
+				.summaryStatistics();
+		System.out.println("Sum: " + doubleSummaryStatistics1.getSum());
+		
+		/*
+		 * PartitioningBy
+		 * La lista nos la va a partir en 2: 1->Donde se cumple el predicado
+		 * 									 2->Donde no se cumple el predicado
+		 */
+		System.out.println("\nUsando partitioningBy");
+		List<Integer> numerosLista = users.stream().map(User::getId).collect(Collectors.toList());
+		Map<Boolean, List<Integer>> mapaMayor = numerosLista.stream()
+				.collect(Collectors.partitioningBy(numero -> numero >3));
+		
+		System.out.println("Lista 1, cumple predicado");
+		mapaMayor.get(true).stream().forEach(System.out::println);
+		
+		System.out.println("Lista 2, NO cumple predicado");
+		mapaMayor.get(false).stream().forEach(System.out::println);
+		
+		/* Collectors.groupingBy(
+		 * Nos permite agrupar segun queramos
+		 * para el ejemplo se usa Character para usar la primera letra del nombre para prdenar
+		 */
+		Map<Character, List<User>> mapaAgrupadoPorLetras = users.stream()
+				.collect(Collectors.groupingBy(usuario -> Character.valueOf(usuario.getNombre().charAt(0))));
+		mapaAgrupadoPorLetras.get('J').stream().forEach(usuario -> System.out.println(usuario.getNombre()));
 	}
 
 	private static void imprimirListaStream() {
