@@ -282,6 +282,8 @@ public class _0_Main_Stream {
 		Map<Character, List<User>> mapaAgrupadoPorLetras = users.stream()
 				.collect(Collectors.groupingBy(usuario -> Character.valueOf(usuario.getNombre().charAt(0))));
 		mapaAgrupadoPorLetras.get('J').stream().forEach(usuario -> System.out.println(usuario.getNombre()));
+		
+		System.out.println("cambio en feature");
 	}
 
 	private static void imprimirListaStream() {
