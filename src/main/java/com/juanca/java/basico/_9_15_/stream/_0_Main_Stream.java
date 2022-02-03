@@ -97,7 +97,7 @@ public class _0_Main_Stream {
 		 * Tiene los datos de diferentes arrays o listados y los concatena en un unico stream
 		 */
 		
-		List<List<String>> nombreVariasListas = new ArrayList<List<String>>(
+		List<List<String>> nombreVariasListas = new ArrayList<>(
 				Arrays.asList(
 					new ArrayList<String>(Arrays.asList("James", "Karol G")),
 					new ArrayList<String>(Arrays.asList("Messi", "Cris H"))
@@ -284,6 +284,42 @@ public class _0_Main_Stream {
 		mapaAgrupadoPorLetras.get('J').stream().forEach(usuario -> System.out.println(usuario.getNombre()));
 		
 		System.out.println("cambio en feature");
+		
+		/*
+		 * Usando mapping podemos convertir una lista de objetos en otra lista que queramos 
+		 */
+		
+		System.out.println("\nUsando mapping");
+		List<String> listaNombres = users.stream()
+				.collect(Collectors.mapping(User::getNombre, Collectors.toList()));
+		
+		listaNombres.forEach(nombre -> System.out.println(nombre));
+		
+		/*
+		 * Usar Stream Paralelo, forma de ejecutar las operaciones del stream en varios hilos
+		 * se usa para ejecutar más rapido por ejemplo la llamada a un servicio que se puede hacer
+		 * de forma paralela para cada elemento si es el caso
+		 */
+		
+		System.out.println("\nUsando parallel Stream");
+		long tiempo1 = System.currentTimeMillis();
+		users.stream().forEach(usuario -> System.out.println(convertirEnMayusculas(usuario.getNombre())));
+		long tiempo2 = System.currentTimeMillis();
+		System.out.println("Sin usar Parallel Se ha demorado: " + (tiempo2 - tiempo1) + "\n");
+		
+		tiempo1 = System.currentTimeMillis();
+		users.parallelStream().forEach(usuario -> System.out.println(convertirEnMayusculas(usuario.getNombre())));
+		tiempo2 = System.currentTimeMillis();
+		System.out.println("Usando Parallel Se ha demorado: " + (tiempo2 - tiempo1));
+	}
+	
+	private static String convertirEnMayusculas(String nombre) {
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return nombre.toUpperCase();
 	}
 
 	private static void imprimirListaStream() {
