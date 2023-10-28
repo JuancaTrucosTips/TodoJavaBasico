@@ -1,0 +1,4 @@
+La arquitectura Onion (también conocida como Arquitectura en Cebolla o Arquitectura Hexagonal Modificada) es una variante de la arquitectura hexagonal que agrega una capa adicional de seguridad y aislamiento.
+La diferencia radica en cómo se organizan y controlan las dependencias entre las capas, para garantizar que las dependencias vayan en una sola dirección, la arquitectura Onion utiliza un enfoque más explícito y estricto al organizar las capas.
+
+La principal diferencia entre la arquitectura Onion y la arquitectura Hexagonal es la organización en capas concéntricas, donde las capas internas contienen lógica de negocio más crítica y las capas externas contienen lógica de aplicación e infraestructura. Las capas externas pueden acceder a las capas internas, pero las capas internas no pueden acceder a las capas externas. Además, las capas se organizan de manera concéntrica, lo que significa que cada capa solo puede acceder a las capas más internas.

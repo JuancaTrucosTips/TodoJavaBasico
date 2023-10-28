@@ -1,5 +1,7 @@
 package com.juanca.java.basico._9_15_.stream;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -68,13 +70,13 @@ public class _0_Main_Stream {
 		List<User> usersFilters = users.stream()
 				.filter(user -> !"Juan".equals(user.getNombre()))
 				.filter(user -> user.getId() >= 2)
-				.collect(Collectors.toList());
+				.collect(toList());
 		System.out.println();
 		usersFilters.forEach(user -> System.out.println(user.getNombre()));
 		
 		List<Integer> listadoIdentificadoresOk = users.stream().map(User::getId)
 				.filter(id -> id > 2)
-				.collect(Collectors.toList());
+				.collect(toList());
 		
 		System.out.println();
 		listadoIdentificadoresOk.forEach(id -> System.out.println(id));
@@ -106,7 +108,7 @@ public class _0_Main_Stream {
 		
 		List<String> nombresUnicaLista = nombreVariasListas.stream()
 				.flatMap(elemento -> elemento.stream())
-				.collect(Collectors.toList());
+				.collect(toList());
 		
 		System.out.println();
 		System.out.println("FlatMap");	
@@ -122,7 +124,7 @@ public class _0_Main_Stream {
 		System.out.println("Peak");
 		List<User> users2 = users.stream()
 				.peek(usuario -> usuario.setNombre(usuario.getNombre() + " Apellido"))
-				.collect(Collectors.toList());
+				.collect(toList());
 		
 		users2.forEach(usuario -> System.out.println(usuario.getNombre()));
 		
@@ -146,7 +148,7 @@ public class _0_Main_Stream {
 		List<String> letrasFiltradas = Arrays.stream(letras)
 				.skip(2)
 				.limit(4)
-				.collect(Collectors.toList());
+				.collect(toList());
 		
 		letrasFiltradas.forEach(letra -> System.out.println(letra));
 		
@@ -160,7 +162,7 @@ public class _0_Main_Stream {
 
 		List<User> usuariosOrdenados = users.stream()
 				.sorted(Comparator.comparing(User::getNombre))
-				.collect(Collectors.toList());
+				.collect(toList());
 		
 		usuariosOrdenados.forEach(usuario -> System.out.println(usuario.getNombre()));
 		
@@ -181,7 +183,7 @@ public class _0_Main_Stream {
 		System.out.println("\nUso de distinct");
 		String [] letrasDuplicadas = {"a", "b", "c", "a", "e", "r", "g", "h", "h", "j" };
 		List<String> letrasUnicas = Arrays.stream(letrasDuplicadas)
-				.distinct().collect(Collectors.toList());
+				.distinct().collect(toList());
 		
 		letrasUnicas.forEach(letra -> System.out.println(letra)); 
 		
@@ -265,7 +267,7 @@ public class _0_Main_Stream {
 		 * 									 2->Donde no se cumple el predicado
 		 */
 		System.out.println("\nUsando partitioningBy");
-		List<Integer> numerosLista = users.stream().map(User::getId).collect(Collectors.toList());
+		List<Integer> numerosLista = users.stream().map(User::getId).collect(toList());
 		Map<Boolean, List<Integer>> mapaMayor = numerosLista.stream()
 				.collect(Collectors.partitioningBy(numero -> numero >3));
 		
@@ -291,7 +293,7 @@ public class _0_Main_Stream {
 		
 		System.out.println("\nUsando mapping");
 		List<String> listaNombres = users.stream()
-				.collect(Collectors.mapping(User::getNombre, Collectors.toList()));
+				.collect(Collectors.mapping(User::getNombre, toList()));
 		
 		listaNombres.forEach(nombre -> System.out.println(nombre));
 		
