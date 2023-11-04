@@ -1,15 +1,15 @@
 package com.juanca.java.arquitectura.hexagonal._01_infraestructura.contoller;
 
-import com.juanca.java.arquitectura.hexagonal._01_infraestructura.adaptador.dto.TaskDto;
-import com.juanca.java.arquitectura.hexagonal._02_aplicacion.casodeuso.TaskUseCase;
+import com.juanca.java.arquitectura.hexagonal._02_aplicacion.dto.TaskDto;
+import com.juanca.java.arquitectura.hexagonal._02_aplicacion.puerto.casodeuso.TaskUseCase;
 import java.util.List;
 
 // Adaptador de la Capa de Presentación:
-public class TaskControllerAdapter {
+public class TaskController {
 
   private final TaskUseCase taskUseCase;
 
-  public TaskControllerAdapter(TaskUseCase taskUseCase) {
+  public TaskController(TaskUseCase taskUseCase) {
     this.taskUseCase = taskUseCase;
   }
 

@@ -7,6 +7,6 @@ public interface TaskRepository {
 
   List<TaskEntity> getAllTaskEntities();
 
-  void saveTask(TaskEntity task);
+  TaskEntity saveTask(TaskEntity task);
 
 }

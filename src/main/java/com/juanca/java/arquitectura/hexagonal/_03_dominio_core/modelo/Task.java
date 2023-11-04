@@ -1,4 +1,4 @@
-package com.juanca.java.arquitectura.hexagonal._03_dominio_core.entidad;
+package com.juanca.java.arquitectura.hexagonal._03_dominio_core.modelo;
 
 public class Task {
 
@@ -6,6 +6,10 @@ public class Task {
 
   private String description;
 
+
+  public Task(String description) {
+    this.description = description;
+  }
 
   public Task(int id, String description) {
     this.id = id;

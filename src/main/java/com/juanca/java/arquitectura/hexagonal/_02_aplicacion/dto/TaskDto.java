@@ -1,10 +1,14 @@
-package com.juanca.java.arquitectura.hexagonal._01_infraestructura.adaptador.dto;
+package com.juanca.java.arquitectura.hexagonal._02_aplicacion.dto;
 
 public class TaskDto {
 
   private int id;
 
   private String description;
+
+  public TaskDto(String description) {
+    this.description = description;
+  }
 
 
   public TaskDto(int id, String description) {
@@ -27,7 +31,6 @@ public class TaskDto {
   public void setDescription(String description) {
     this.description = description;
   }
-
 
 
 }

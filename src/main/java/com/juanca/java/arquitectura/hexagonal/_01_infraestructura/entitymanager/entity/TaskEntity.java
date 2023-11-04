@@ -6,6 +6,10 @@ public class TaskEntity {
 
   private String description;
 
+  public TaskEntity(String description) {
+   this.description = description;
+  }
+
   public int getId() {
     return id;
   }

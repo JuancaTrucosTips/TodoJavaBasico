@@ -1,6 +1,6 @@
 package com.juanca.java.arquitectura.hexagonal._03_dominio_core.puerto;
 
-import com.juanca.java.arquitectura.hexagonal._03_dominio_core.entidad.Task;
+import com.juanca.java.arquitectura.hexagonal._03_dominio_core.modelo.Task;
 import java.util.List;
 
 /**
@@ -11,6 +11,6 @@ public interface TaskServicePort {
 
   List<Task> getTasks();
 
-  void addTask(Task task);
+  Task addTask(Task task);
 
 }

@@ -3,7 +3,7 @@ package com.juanca.java.arquitectura.hexagonal._01_infraestructura.entitymanager
 import com.juanca.java.arquitectura.hexagonal._01_infraestructura.entitymanager.entity.TaskEntity;
 import java.util.List;
 
-public class TaskRepositoryAdapter implements TaskRepository {
+public class TaskRepositoryImpl implements TaskRepository {
 
   // Conexión a la base de datos
   public List<TaskEntity> getAllTaskEntities() {
@@ -11,8 +11,9 @@ public class TaskRepositoryAdapter implements TaskRepository {
     return null;
   }
 
-  public void saveTask(TaskEntity task) {
+  public TaskEntity saveTask(TaskEntity task) {
     // Lógica para guardar una nueva tarea en la base de datos
+    return null;
   }
 
 }
