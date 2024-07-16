@@ -1,4 +1,4 @@
-package com.juanca.java.patrones.decorador;
+package com.juanca.java.patrones.decorador.componente;
 
 public interface Bebida {
 
